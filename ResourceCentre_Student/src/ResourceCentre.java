@@ -129,14 +129,16 @@ public class ResourceCentre {
 		String output = "";
 
 		for (int i = 0; i < camcorderList.size(); i++) {
-
-			output += String.format("%-10s %-30s %-10s %-10s %-20d\n", camcorderList.get(i).getAssetTag(),
+			if (camcorderList.get(i).getIsAvailable()) {
+				output += String.format("%-10s %-30s %-10s %-10s %-20d\n", camcorderList.get(i).getAssetTag(),
 					camcorderList.get(i).getDescription(), 
 					ResourceCentre.showAvailability(camcorderList.get(i).getIsAvailable()),
 					camcorderList.get(i).getDueDate(),camcorderList.get(i).getOpticalZoom());
+			}
 		}
 		return output;
 	}
+	
 	public static void viewAllCamcorder(ArrayList<Camcorder> camcorderList) {
 		ResourceCentre.setHeader("CAMCORDER LIST");
 		String output = String.format("%-10s %-30s %-10s %-10s %-20s\n", "ASSET TAG", "DESCRIPTION",
@@ -167,9 +169,17 @@ public class ResourceCentre {
 		
 	}
 	public static void addCamcorder(ArrayList<Camcorder> camcorderList, Camcorder cc) {
+		Camcorder item;
+		for(int i = 0; i < camcorderList.size(); i++) {
+			item = camcorderList.get(i);
+			if (item.getAssetTag().equalsIgnoreCase(cc.getAssetTag()) )
+				return;
+		}
+		if ((cc.getAssetTag().isEmpty()) || (cc.getDescription().isEmpty()) ) {
+			return;
+		}
 		
 		camcorderList.add(cc);
-		
 	}
 	
 	public static Chromebook inputChromebook() {	
@@ -188,6 +198,9 @@ public class ResourceCentre {
 		
 		boolean isLoaned = false;
 
+		if (tag.isEmpty() || dueDate.isEmpty())
+			return false;
+		
 		for (int i = 0; i < camcorderList.size(); i++) {
 			if (tag.equalsIgnoreCase(camcorderList.get(i).getAssetTag())
 					&& camcorderList.get(i).getIsAvailable() == true) {
@@ -196,7 +209,6 @@ public class ResourceCentre {
 				camcorderList.get(i).setDueDate(dueDate);
 				
 				isLoaned = true;
-				
 			}
 		}
 		return isLoaned;
