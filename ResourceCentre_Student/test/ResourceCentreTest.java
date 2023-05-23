@@ -150,22 +150,25 @@ public class ResourceCentreTest {
 
 	@Test
 	public void testDoReturnCamcorder() {
-		//boundary
+		
+		// Test case 1: Return a loaned out item
 		assertNotNull("Test if there is valid Camcorder arraylist to add to", camcorderList);
 		ResourceCentre.addCamcorder(camcorderList, cc1);
-		//error
+		Boolean ok = ResourceCentre.doLoanCamcorder(camcorderList, "CC0011", "8-8-2020" );
+		assertTrue("Test if CC0011 is successfully loaned out.", ok);
 		Boolean isReturned = ResourceCentre.doReturnCamcorder(camcorderList, "CC0011");
-		assertFalse("Test if available camcorder CC0011 is returned -false?", isReturned);		
-		//normal
-		ResourceCentre.addCamcorder(camcorderList, cc2);
-		cc2.setIsAvailable(false);
-		isReturned = ResourceCentre.doReturnCamcorder(camcorderList, "CC0012");
-		assertTrue("Test if loaned out amcorder CC0012 is returned- true", isReturned);
-		//error
-		isReturned = ResourceCentre.doReturnCamcorder(camcorderList, "CC0013");
-		assertFalse("Test if non-existing amcorder CC0013 is returned - false?", isReturned);
+		assertTrue("Test if the return of CC0011 is successful.", isReturned);
+		assertTrue("Test that CC0011 is now available.",camcorderList.get(0).getIsAvailable());
 
+		// Test case 2: Return an item that is not loaned out
+		isReturned = ResourceCentre.doReturnCamcorder(camcorderList, "CC0011");
+		assertFalse("Test that the return fails.", isReturned);
+				
+		// Test case 3: Return an item that does not exist 
+		isReturned = ResourceCentre.doReturnCamcorder(camcorderList, "CC0013");
+		assertFalse("Test the the return of CC0013 fails.", isReturned);	
 	}
+	
 	@Test
 	public void testDoReturnChromebook() {
 		//fail("Not yet implemented");
