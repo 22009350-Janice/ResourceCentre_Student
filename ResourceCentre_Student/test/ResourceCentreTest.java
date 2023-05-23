@@ -179,8 +179,10 @@ public class ResourceCentreTest {
 	public void tearDown() throws Exception {
 		cc1 = null;
 		cc2 = null;
+		cc3 = null;
 		cb1 = null;
 		cb2 = null;
+		cb3 = null;
 		camcorderList = null;
 		chromebookList = null;
 
