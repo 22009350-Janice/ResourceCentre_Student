@@ -153,7 +153,7 @@ public class ResourceCentre {
 		return output;
 	}
 	public static void viewAllChromebook(ArrayList<Chromebook> chromebookList) {
-		
+		// write your code here
 		String output = retrieveAllChromebook(chromebookList);
 		System.out.println(output);
 	}
@@ -230,15 +230,16 @@ public class ResourceCentre {
 		return true;
 	}
 	public static void loanChromebook(ArrayList<Chromebook> chromebookList) {
-		// write your code here
-		
-		
+		// write your code here		
 	}
 	
 	//================================= Option 4 Return an item (CRUD - Update)=================================
 	public static boolean doReturnCamcorder(ArrayList<Camcorder> camcorderList,String tag) {
 		boolean isReturned = false;
 
+		if (tag.isEmpty())
+			return false;
+		
 		for (int i = 0; i < camcorderList.size(); i++) {
 			if (tag.equalsIgnoreCase(camcorderList.get(i).getAssetTag())
 					&& camcorderList.get(i).getIsAvailable() == false) {
@@ -270,7 +271,6 @@ public class ResourceCentre {
 	}
 	public static void returnChromebook(ArrayList<Chromebook> chromebookList) {
 		// write your code here
-	
 	}
 
 
