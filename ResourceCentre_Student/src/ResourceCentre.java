@@ -2,7 +2,11 @@ import java.util.ArrayList;
 
 public class ResourceCentre {
 
+<<<<<<< HEAD
 	public static void main(String[] args) {// jgkgkjk
+=======
+	public static void main(String[] args) {// jk
+>>>>>>> branch 'master' of https://github.com/22009350-Janice/ResourceCentre_Student.git
 
 		ArrayList<Camcorder> camcorderList = new ArrayList<Camcorder>();
 		ArrayList<Chromebook> chromebookList = new ArrayList<Chromebook>();
@@ -223,6 +227,11 @@ public class ResourceCentre {
 		chromebookList.add(cb);
 	}
 
+<<<<<<< HEAD
+=======
+	// ================================= Option 3 Loan an item (CRUD - Update)
+	// =================================
+>>>>>>> branch 'master' of https://github.com/22009350-Janice/ResourceCentre_Student.git
 	public static boolean doLoanCamcorder(ArrayList<Camcorder> camcorderList, String tag, String dueDate) {
 
 		boolean isLoaned = false;
@@ -288,6 +297,11 @@ public class ResourceCentre {
 		}
 	}
 
+<<<<<<< HEAD
+=======
+	// ================================= Option 4 Return an item (CRUD -
+	// Update)=================================
+>>>>>>> branch 'master' of https://github.com/22009350-Janice/ResourceCentre_Student.git
 	public static boolean doReturnCamcorder(ArrayList<Camcorder> camcorderList, String tag) {
 		boolean isReturned = false;
 
@@ -349,4 +363,8 @@ public class ResourceCentre {
 			System.out.println("Camcorder " + tag + " returned");
 		}
 	}
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'master' of https://github.com/22009350-Janice/ResourceCentre_Student.git
 }
